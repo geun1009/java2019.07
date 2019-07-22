@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="myjoin.jsp" method="post">
+
+		<fieldset>
+
+			<legend>Login Form:</legend>
+
+			User ID:<br> <input type="text" name="id" id="id"> <input
+				type="button" value="중복확인" id="btn1"> <br>
+			<div id="target"></div>
+			User PWD:<br> <input type="password" name="pwd"> <br>
+			User NAME:<br> <input type="name" name="name"><br>
+			<br> <input type="submit" value="회원가입">
+
+		</fieldset>
+
+	</form>
+</body>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		$(btn1).click(function() {
+			//console.log("Test");
+				$.ajax({
+					//$('#id').val() 입력한 ㄱ밧
+					//비동기식으로 보낼 서버의 주소의 값
+					url:"idSearch.jsp?id="+$('#id').val(),
+					//응답이 성공했을때 callback 함수로 데이터를 받는다
+					//이때 데이터는 서버의 데이터
+					success:function(data){
+						console.log(data);
+						$('#target').css("width","300").css("background","yellow").html(data);
+					}
+				})
+		})
+	})
+</script>
+
+</html>

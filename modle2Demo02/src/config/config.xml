@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+	<typeAlias type="vo.GogekVO" alias="gvo" />
+	<typeAlias type="vo.SearchVO" alias="svo" />
+	<typeAlias type="vo.SawonVO" alias="savo" />
+	<typeAlias type="vo.DeptVOVO" alias="deptvo" />
+</typeAliases>
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC"/>
+			<dataSource type="JNDI">
+			<property name="data_source"
+				value="java:comp/env/jdbc/mybit"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/gogek.xml"/>
+		<mapper resource="mapper/sawon.xml"/>
+	</mappers>
+</configuration>

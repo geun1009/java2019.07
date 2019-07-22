@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mymember">
+	<insert id="add" parameterType="mvo">
+		insert into mymember values(mymember_seq.nextVal,#{id},#{pwd},#{name},sysdate,#{addr})
+	</insert>
+	<select id="List" resultType="mvo">
+		select num,id,name,to_char(edate,'yyyy-mm-dd') edate,addr from mymember
+		order by num desc
+	</select>
+	<select id="idcheck" resultType="int" parameterType="String">
+		select count(*) count from mymember where id=#{id}
+	</select>
+</mapper>

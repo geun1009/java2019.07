@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gogek">
+	<select id ="list" resultType="gvo">
+	select gobun,goname,gotel, rpad(substr(gojumin,1,7),14,'*') gojumin,godam from gogek
+	order by 1 desc
+	</select>
+	<select id = "search" resultType="gvo" parameterType="svo">
+	select gobun,goname,gotel, rpad(substr(gojumin,1,7),14,'*') gojumin,godam from gogek
+	<if test="searchValue != null">
+		<where>
+			<choose>
+				<when test="searchType == 1"> goname like '%'|| #{searchValue}||'%'</when>
+				<when test="searchType == 2"> gotel like '%'|| #{searchValue}||'%'</when>
+				<when test="searchType == 3"> gojumin like '%'|| #{searchValue}||'%'</when>
+			</choose>	
+		</where>	
+	</if>
+	order by 1 desc
+	</select>
+</mapper>

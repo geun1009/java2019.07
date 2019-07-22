@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>init</servlet-name>
+		<servlet-class>ex01.Ex3_initServlet</servlet-class>
+		<init-param>
+		<param-name>email</param-name>
+		<param-value>admin2@kosata.or.kr</param-value>
+		</init-param>
+		<init-param>
+		<param-name>tel</param-name>
+		<param-value>031-126-800</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>init</servlet-name>
+		<url-pattern>/init</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

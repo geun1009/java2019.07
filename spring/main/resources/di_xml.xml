@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd ">
+
+	<bean class="di_xml.HankookTire" id="hanTire"/>
+	<bean class="di_xml.KumhoTire" id="kumTire"/>
+	<bean class="di_xml.Car" id="car" >
+		<!-- <property name="tire" ref="kumTire"></property>  -->
+		<constructor-arg ref="hanTire" />
+	</bean>
+	
+	<bean class="di_xml.Car" id="car2">
+		<!-- 
+		<property name="tire" ref="hanTire" />
+		<property name="spareTire" ref="kumTire"></property>
+		 -->
+		 
+		<constructor-arg ref="kumTire" index="0" />
+		<constructor-arg ref="hanTire" index="1"></constructor-arg>
+		<constructor-arg value="10" index="2"></constructor-arg>
+	</bean>
+	   					   
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+

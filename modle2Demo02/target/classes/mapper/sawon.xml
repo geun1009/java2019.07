@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sawon">
+
+   <resultMap type="deptvo" id="deptResultMap">
+      <constructor> <!-- 생성자로 지정 -->
+         <idArg column="deptno" javaType="java.LangInteger" />
+         <arg column="dname" javaType="java.lang.String" />
+
+      </constructor>
+      <result property="loc" column="location" />
+   </resultMap>
+
+   <select id="showDept" resultMap="deptResultMap">
+      select deptno, dname, loc
+      location from dept orer by 1 desc
+   </select>
+
+   <resultMap type="savo" id="sawonphoneResult2">
+      <id property="sabun" column="ssabun" />
+      <result property="saname" column="saname" />
+      <result property="sajob" column="sajob" />
+      <association property="sphone" column="sabun"
+         javaType="sphonevo">
+         <id property="pnum" column="pnum" />
+         <result property="pmodel" column="pmodel" />
+         <result property="phnum" column="phnum" />
+
+      </association>
+   </resultMap>
+
+   <select id="sawonlist2" resultMap="sawonphoneResult2">
+
+      select s.sabun sabun, s.saname saname, s.sajob sajob, p.pnum pnum,p.pmodel
+      pmodel,p.phnum phnum,p.pdate pdate
+      from sawon s,sawon_phone p where s.sabun=p.pnum(+)
+   </select>
+
+</mapper>
